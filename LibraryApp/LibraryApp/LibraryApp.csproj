@@ -1,0 +1,253 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{8E683788-DFA1-4A50-81D7-7DA89C4D0061}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>LibraryApp</RootNamespace>
+    <AssemblyName>LibraryApp</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Data.Sqlite, Version=4.0.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
+      <HintPath>..\packages\Mono.Data.Sqlite.1.0.61\lib\net40\Mono.Data.Sqlite.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.SQLite, Version=1.0.117.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.117.0\lib\net46\System.Data.SQLite.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.SQLite.EF6, Version=1.0.117.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SQLite.EF6.1.0.117.0\lib\net46\System.Data.SQLite.EF6.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.SQLite.Linq, Version=1.0.117.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SQLite.Linq.1.0.117.0\lib\net46\System.Data.SQLite.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="educational1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="educational1.Designer.cs">
+      <DependentUpon>educational1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="educational2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="educational2.Designer.cs">
+      <DependentUpon>educational2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="educational3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="educational3.Designer.cs">
+      <DependentUpon>educational3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="fiction1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fiction1.Designer.cs">
+      <DependentUpon>fiction1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="fiction2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fiction2.Designer.cs">
+      <DependentUpon>fiction2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="fiction3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fiction3.Designer.cs">
+      <DependentUpon>fiction3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="lendingBooks1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="lendingBooks1.Designer.cs">
+      <DependentUpon>lendingBooks1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="lendingBooks2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="lendingBooks2.Designer.cs">
+      <DependentUpon>lendingBooks2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="lendingBooks3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="lendingBooks3.Designer.cs">
+      <DependentUpon>lendingBooks3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="subscription.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="subscription.Designer.cs">
+      <DependentUpon>subscription.cs</DependentUpon>
+    </Compile>
+    <Compile Include="subscription2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="subscription2.Designer.cs">
+      <DependentUpon>subscription2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="subscription3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="subscription3.Designer.cs">
+      <DependentUpon>subscription3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="subscription_add_new_people.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="subscription_add_new_people.Designer.cs">
+      <DependentUpon>subscription_add_new_people.cs</DependentUpon>
+    </Compile>
+    <Compile Include="subscription_delete_class.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="subscription_delete_class.Designer.cs">
+      <DependentUpon>subscription_delete_class.cs</DependentUpon>
+    </Compile>
+    <Compile Include="subscription_new_class.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="subscription_new_class.Designer.cs">
+      <DependentUpon>subscription_new_class.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="educational1.resx">
+      <DependentUpon>educational1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="educational2.resx">
+      <DependentUpon>educational2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="educational3.resx">
+      <DependentUpon>educational3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fiction1.resx">
+      <DependentUpon>fiction1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fiction2.resx">
+      <DependentUpon>fiction2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fiction3.resx">
+      <DependentUpon>fiction3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="lendingBooks1.resx">
+      <DependentUpon>lendingBooks1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="lendingBooks2.resx">
+      <DependentUpon>lendingBooks2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="lendingBooks3.resx">
+      <DependentUpon>lendingBooks3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="subscription.resx">
+      <DependentUpon>subscription.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="subscription2.resx">
+      <DependentUpon>subscription2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="subscription3.resx">
+      <DependentUpon>subscription3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="subscription_add_new_people.resx">
+      <DependentUpon>subscription_add_new_people.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="subscription_delete_class.resx">
+      <DependentUpon>subscription_delete_class.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="subscription_new_class.resx">
+      <DependentUpon>subscription_new_class.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Данный проект ссылается на пакеты NuGet, отсутствующие на этом компьютере. Используйте восстановление пакетов NuGet, чтобы скачать их.  Дополнительную информацию см. по адресу: http://go.microsoft.com/fwlink/?LinkID=322105. Отсутствует следующий файл: {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+    <Error Condition="!Exists('..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.117.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.117.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+  <Import Project="..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.117.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets" Condition="Exists('..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.117.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets')" />
+</Project>
