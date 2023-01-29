@@ -1,57 +1,126 @@
 ﻿using System;
 using System.Windows.Forms;
 using System.Data.SQLite;
+using MySql.Data.MySqlClient;
+using System.Data;
+using static LibraryApp.Program;
+using MySqlX.XDevAPI.Common;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace LibraryApp
 {
     public partial class educational3 : Form
     {
-        private static string dbName = @"Data Source = C:\Users\alexc\source\repos\LibraryApp\EdBooks.db";
+
+        string author = "";
+        string title = "";
+        string other = "";
+        string startYear = "";
+        string level = "";
+        string appointment = "";
+        string obj = "";
+        string startClass = "";
+        string endClass = "";
 
         public educational3()
         {
             InitializeComponent();
+            numericUpDown1.ReadOnly = true;
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            if (textBox1.Text != "" & textBox2.Text != "" & textBox3.Text != "" & textBox11.Text != "" & textBox12.Text != "")
-            {
-                string bookName = textBox1.Text;
-                string author = textBox2.Text;
-                string subject = textBox3.Text;
-                string clas = textBox5.Text;
-                string year = textBox12.Text;
-                string count = textBox11.Text;
-                string message = $"Вы действительно хотите изменить запись?\nНазвание книги: {bookName}\nАвтор: {author}\nПредмет: {subject}\nИздательство: {1}\nКласс: {clas}\nФПУ: {1}\nУровень образования: {1}\nСрок использования:{1}\nГод: {year}\nСерия: {1}";
-                string caption = "Подтверждение удаления учебной книги";
-                MessageBoxButtons buttons = MessageBoxButtons.YesNo;
-                DialogResult result;
+        
 
-                // Displays the MessageBox.
-                result = MessageBox.Show(message, caption, buttons);
-                if (result == DialogResult.Yes)
+
+        public int GetMaxCountOfBooks(string author, string title, string other, string startYear, string level, string appointment, string obj, string startClass, string endClass)
+        {
+            DB db = new DB();
+            db.OpenConnection();
+            string query = $"SELECT `Количество` FROM edbooks WHERE `Автор` = '{author}' AND `Название` = '{title}' AND `Другие_авторы` = '{other}' AND `Год` = '{startYear}' AND `Уровень` = '{level}' AND `Назначение` = '{appointment}' AND `Предмет` = '{obj}' AND `Стартовый_класс` = '{startClass}' AND `Конечный_класс` = '{endClass}'";
+            MySqlCommand cmd = new MySqlCommand(query, db.GetConnection());
+            int maxCount = Convert.ToInt32(cmd.ExecuteScalar());
+            return maxCount;
+        }
+
+        private void buttonFind_Click(object sender, EventArgs e)
+        {
+            author = textBoxAuthor.Text;
+            title = textBoxTitle.Text;
+            other = textBoxOther.Text == "" ? "none" : textBoxOther.Text;
+            startYear = textBoxStartYear.Text;
+            level = comboBoxLevel.Text;
+            appointment = comboBoxAppointment.Text;
+            obj = comboBoxObject.Text;
+            startClass = textBoxStartClass.Text;
+            endClass = textBoxEndClass.Text;
+            FindBook(author, title, other, startYear, level, appointment, obj, startClass, endClass);
+            numericUpDown1.Maximum = GetMaxCountOfBooks(author, title, other, startYear, level, appointment, obj, startClass, endClass);
+        }
+
+
+         
+
+        public void FindBook(string author, string title, string other, string startYear, string level, string appointment, string obj, string startClass, string endClass)
+        {
+            DB db = new DB();
+            db.OpenConnection();
+            string query = $"SELECT `Автор`, `Название`, `Год`, `Издательство` FROM edbooks WHERE `Автор` = '{author}' AND `Название` = '{title}' AND `Другие_авторы` = '{other}' AND `Год` = '{startYear}' AND `Уровень` = '{level}' AND `Назначение` = '{appointment}' AND `Предмет` = '{obj}' AND `Стартовый_класс` = '{startClass}' AND `Конечный_класс` = '{endClass}'";
+            
+            MySqlCommand cmd = new MySqlCommand(query, db.GetConnection());
+            DataTable dt = new DataTable();
+            MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
+            adapter.Fill(dt);
+            adapter.SelectCommand = cmd;
+            dt = new DataTable();
+            adapter.Fill(dt);
+            dataGridView1.DataSource = dt;
+        }
+
+        public void DeleteBook(string author, string title, string other, string startYear, string level, string appointment, string obj, string startClass, string endClass)
+        {
+            string request = $"DELETE FROM edbooks WHERE `Автор` = '{author}' AND `Название` = '{title}' AND `Другие_авторы` = '{other}' AND `Год` = '{startYear}' AND `Уровень` = '{level}' AND `Назначение` = '{appointment}' AND `Предмет` = '{obj}' AND `Стартовый_класс` = '{startClass}' AND `Конечный_класс` = '{endClass}'";
+            MakeNonQuery(request);
+        }
+
+        public void UpdateCountOfBooks(string author, string title, string other, string startYear, string level, string appointment, string obj, string startClass, string endClass)
+        {
+            int count = Decimal.ToInt32(numericUpDown1.Value);
+            int maxCount = GetMaxCountOfBooks(author, title, other, startYear, level, appointment, obj, startClass, endClass);
+            string request = $"UPDATE edbooks SET `Количество` = '{maxCount - count}' WHERE `Автор` = '{author}' AND `Название` = '{title}' AND `Другие_авторы` = '{other}' AND `Год` = '{startYear}' AND `Уровень` = '{level}' AND `Назначение` = '{appointment}' AND `Предмет` = '{obj}' AND `Стартовый_класс` = '{startClass}' AND `Конечный_класс` = '{endClass}'";
+            MakeNonQuery(request);
+        }
+
+
+        private void buttonDelete_Click(object sender, EventArgs e)
+        {
+
+            if (dataGridView1.RowCount == 2)
+            {
+                int count = Decimal.ToInt32(numericUpDown1.Value);
+                int maxCount = GetMaxCountOfBooks(author, title, other, startYear, level, appointment, obj, startClass, endClass);
+                if (maxCount == count)
                 {
-                    SQLiteConnection con = new SQLiteConnection(dbName);
-                    con.Open();
-                    string query = $"UPDATE EdBooks SET amount='{count}' WHERE bookName='{bookName}' AND author='{author}' AND subject='{subject}' AND clas='{clas}' AND year='{year}';";
-                    
-                    SQLiteCommand cmd = new SQLiteCommand(query, con);
-                    cmd.ExecuteNonQuery();
-                    con.Close();
+                    DialogResult dialogResult = MessageBox.Show($"Вы точно хотите эту книгу?", "", MessageBoxButtons.YesNo);
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        DeleteBook(author, title, other, startYear, level, appointment, obj, startClass, endClass);
+                        MessageBox.Show("Книги успешно списана!");
+                    }
                 }
-
+                else
+                {
+                    DialogResult dialogResult = MessageBox.Show($"Вы точно хотите списать {count} экземляров данной книги?", "", MessageBoxButtons.YesNo);
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        UpdateCountOfBooks(author, title, other, startYear, level, appointment, obj, startClass, endClass);
+                        MessageBox.Show($"Успешно списано {count} экземпляров книг!");
+                    }
+                }
             }
-            else
+            else if (dataGridView1.RowCount == 1)
             {
-                MessageBox.Show("Заполните все данные!");
+                MessageBox.Show("Ни одной книги не найдено!");
             }
-        }
 
-        private string GetValueDB()
-        {
-            return "";
         }
-       
     }
 }

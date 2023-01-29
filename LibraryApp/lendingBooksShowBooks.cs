@@ -92,9 +92,10 @@ namespace LibraryApp
                     string studId = studentId;
 
                     MakeNonQuery($"DELETE FROM `users_boks` WHERE `book_id` = '{bookId}' AND `student_id` = '{studId}'");
-
+                    MessageBox.Show("Книга успешно возвращена!");
                     dataGridView1.Rows.RemoveAt(info.RowIndex);
                     dataGridView1.Refresh();
+
                 }
             }
             else

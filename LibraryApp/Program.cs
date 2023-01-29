@@ -1,7 +1,9 @@
-﻿using MySql.Data.MySqlClient;
+﻿
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -36,7 +38,9 @@ namespace LibraryApp
             {"Фамилия", ""},
             {"Имя", ""},
             {"Отчество", ""},
-        };
+            {"id", ""}
+
+    };
         public static string studentId;
 
         public static void MakeNonQuery(string request)
@@ -46,6 +50,16 @@ namespace LibraryApp
             MySqlCommand cmd = new MySqlCommand(request, db.GetConnection());
             cmd.ExecuteNonQuery();
             db.CloseConnection();
+        }
+
+
+        public static string GetScalarValueFromDB(string request)
+        {
+            DB db = new DB();
+            db.OpenConnection();
+            MySqlCommand cmd = new MySqlCommand(request, db.GetConnection());
+            string maxCount = (string)cmd.ExecuteScalar();
+            return maxCount;
         }
 
 

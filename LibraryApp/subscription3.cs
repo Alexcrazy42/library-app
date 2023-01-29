@@ -26,9 +26,8 @@ namespace LibraryApp
         // переход к классу
         private void button1_Click(object sender, EventArgs e)
         {
-            subscription subscr = (subscription)Application.OpenForms["subscription"];
-            subscription sub = new subscription();
-            sub.ShowDialog();
+            subscription2 sub2 = new subscription2();
+            sub2.ShowDialog();
         }
 
 

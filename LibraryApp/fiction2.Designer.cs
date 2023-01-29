@@ -317,9 +317,9 @@
             this.label15.AutoSize = true;
             this.label15.Location = new System.Drawing.Point(34, 378);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(93, 13);
+            this.label15.Size = new System.Drawing.Size(86, 13);
             this.label15.TabIndex = 39;
-            this.label15.Text = "Дата накладной:";
+            this.label15.Text = "Дата поставки:";
             // 
             // dateTimePicker1
             // 

@@ -42,7 +42,7 @@ namespace LibraryApp
 
                 if (dateNow != dateOfBirth)
                 {
-                    string stm = $"INSERT INTO `users` (`Фамилия`, `Имя`, `Отчество`, `Дата_Рождения`, `Класс`, `Взятые_книги`, `Логин`, `Пароль`, `Школа`, `id`) VALUES('{surname}', '{name}', '{patronymic}', '{dateOfBirth}', '{subscription.selectedClass}', '','{surname}', '{GenerateUniquePassword()}', '{school}', '{(studId+1).ToString()}')";
+                    string stm = $"INSERT INTO `users` (`Фамилия`, `Имя`, `Отчество`, `Дата_Рождения`, `Класс`, `Взятые_книги`, `Логин`, `Пароль`, `Школа`, `id`) VALUES('{surname}', '{name}', '{patronymic}', '{dateOfBirth}', '{subscription2.selectedClass}', '','{surname}', '{GenerateUniquePassword()}', '{school}', '{(studId+1).ToString()}')";
                     
                     DB db = new DB();
                     db.OpenConnection();
