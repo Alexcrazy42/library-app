@@ -77,7 +77,28 @@ namespace LibraryApp
 
         public void buttonGive_Click(object sender, EventArgs e)
         {
-            string edBookId = GetScalarValueFromDB($"SELECT id FROM edbooks WHERE `Автор` = '{author}' AND `Название` = '{title}' AND `Другие_авторы` = '{other}' AND `Год` = '{startYear}' AND `Уровень` = '{level}' AND `Назначение` = '{appointment}' AND `Предмет` = '{obj}' AND `Стартовый_класс` = '{startClass}' AND `Конечный_класс` = '{endClass}'");
+            
+
+            if (dataGridView1.RowCount == 2)
+            {
+                DialogResult dialogResult = MessageBox.Show($"Вы точно хотите выдать ученику эту книгу?", "", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    string edBookId = GetScalarValueFromDB($"SELECT id FROM edbooks WHERE `Автор` = '{author}' AND `Название` = '{title}' AND `Другие_авторы` = '{other}' AND `Год` = '{startYear}' AND `Уровень` = '{level}' AND `Назначение` = '{appointment}' AND `Предмет` = '{obj}' AND `Стартовый_класс` = '{startClass}' AND `Конечный_класс` = '{endClass}'");
+                    MakeNonQuery($"INSERT INTO users_boks(`student_id`, `book_id`) VALUES ('{Program.studentId}', '{edBookId}')");
+                    MessageBox.Show("Книга успешно выдана!");
+                    this.Close();
+                }
+
+            }
+            else if (dataGridView1.RowCount == 1)
+            {
+                MessageBox.Show("Ни одной книги с таким инвентарным номером не найдено!");
+            }
+            else
+            {
+                MessageBox.Show("Ошибка!");
+            }
 
         }
 

@@ -105,6 +105,7 @@ namespace LibraryApp
                     student["Имя"] = name;
                     student["Отчество"] = patronymic;
                     student["Класс"] = comboBox1.Text;
+                    studentId = GetScalarValueFromDB($"SELECT id FROM `users` WHERE `Фамилия` = '{surname}' AND `Имя` = '{name}' AND `Отчество` = '{patronymic}' AND `Класс` = '{comboBox1.Text}' AND `Школа` = '{school}'");
                     lendingEdBook leb = new lendingEdBook();
                     leb.ShowDialog();
 
@@ -144,6 +145,7 @@ namespace LibraryApp
                     student["Имя"] = name;
                     student["Отчество"] = patronymic;
                     student["Класс"] = comboBox1.Text;
+                    studentId = GetScalarValueFromDB($"SELECT id FROM `users` WHERE `Фамилия` = '{surname}' AND `Имя` = '{name}' AND `Отчество` = '{patronymic}' AND `Класс` = '{comboBox1.Text}' AND `Школа` = '{school}'");
                     lendingFictionBook lfb = new lendingFictionBook();
                     lfb.ShowDialog();
 

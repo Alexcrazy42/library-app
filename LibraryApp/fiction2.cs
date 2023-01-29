@@ -93,7 +93,7 @@ namespace LibraryApp
                     }
                 }
                 AddBook(id, author, title, invNumber, bookSchool, town, podz, chapterNum, izd, year, charachterInfo, svedIzd, pageCount, language, genre, appointment, bbkNum, bbkTitle, udkNum, udkTitle, isbn, money, noteNum, supplyDate, sourceFunding);
-                UpdateId(id);
+                UpdateId();
                 MessageBox.Show("Книга успешной внесена!");
             }
             else
@@ -214,18 +214,13 @@ namespace LibraryApp
 
         public string GetId()
         {
-            DB db = new DB();
-            db.OpenConnection();
-            MySqlCommand schoolByLogPassword = new MySqlCommand($"SELECT `fiction_book_id` FROM `id_params`", db.GetConnection());
-            string prevId = (string)schoolByLogPassword.ExecuteScalar().ToString();
-
+            string prevId = GetScalarValueFromDB($"SELECT `fiction_book_id` FROM `id_params`") + "Х";
             return prevId;
         }
 
-        public void UpdateId(string prevId)
+        public void UpdateId()
         {
-            string newId = (Int64.Parse(prevId) + 1).ToString();
-            MakeNonQuery($"UPDATE `id_params` SET `fiction_book_id` = '{newId}'");
+            MakeNonQuery($"UPDATE `id_params` SET `fiction_book_id` = `fiction_book_id`+1");
         }
 
         

@@ -34,14 +34,17 @@ namespace LibraryApp
             string startClass = textBoxStartClass.Text;
             string endClass = textBoxEndClass.Text;
             string count = textBoxCount.Text;
-            
+            string id = GetId();
+
+
             if (author != "" && editor != "" && title != "" && number != "" && otherAuthors != "" && state != "" && money != "" && place != "" && izd != ""
                 && year != "" && language != "" && sourceFinancing != "" && note != "" && level != "" && appoinment != "" && obj != "" && startClass != "" 
                 && endClass != "" && count != "") 
             {
                 
-                string request = $"INSERT INTO edbooks(`Автор`, `Редактор`, `Название`, `Номер_части`, `Другие_авторы`, `Состояние`, `Цена`, `Место_издания`, `Издательство`, `Год`, `Язык`, `Источник_финансирования`, `Примечание`, `Уровень`, `Назначение`, `Предмет`, `Стартовый_класс`, `Конечный_класс`, `Количество`) VALUES('{author}', '{editor}', '{title}', '{number}', '{otherAuthors}', '{state}', '{money}', '{place}', '{izd}', '{year}', '{language}', '{sourceFinancing}', '{note}', '{level}', '{appoinment}', '{obj}', '{startClass}', '{endClass}', '{count}')";
+                string request = $"INSERT INTO edbooks(`Автор`, `Редактор`, `Название`, `Номер_части`, `Другие_авторы`, `Состояние`, `Цена`, `Место_издания`, `Издательство`, `Год`, `Язык`, `Источник_финансирования`, `Примечание`, `Уровень`, `Назначение`, `Предмет`, `Стартовый_класс`, `Конечный_класс`, `Количество`, `id`) VALUES('{author}', '{editor}', '{title}', '{number}', '{otherAuthors}', '{state}', '{money}', '{place}', '{izd}', '{year}', '{language}', '{sourceFinancing}', '{note}', '{level}', '{appoinment}', '{obj}', '{startClass}', '{endClass}', '{count}', '{id}')";
                 MakeNonQuery(request);
+                UpdateId();
                 MessageBox.Show("Книга успешно внесена!");
             }
             else
@@ -52,8 +55,18 @@ namespace LibraryApp
 
         }
 
+        public string GetId()
+        {
+            string prevId = GetScalarValueFromDB($"SELECT `ed_book_id` FROM `id_params`") + "У";
 
-        
+            return prevId;
+        }
+
+        public void UpdateId()
+        {
+            MakeNonQuery($"UPDATE `id_params` SET `ed_book_id` = `ed_book_id` + 1");
+
+        }
 
     }
 }

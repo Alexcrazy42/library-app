@@ -53,8 +53,8 @@ namespace LibraryApp
                 if (dialogResult == DialogResult.Yes)
                 {
                     //MakeNonQuery($"DELETE FROM `fictionbooks` WHERE `Инвентарный_номер` = {textBox5.Text} AND `Школа` = {school}");
-                    string bookId = GetScalarValueFromDB($"SELECT `id` FROM fictionbooks WHERE `Инвентарный_номер` = {textBoxInvNum.Text}");
-                    MakeNonQuery($"INSERT INTO users_boks(`student_id`, `book_id`) VALUES ('{Program.studentId}', '{bookId}')");
+                    string FictionbookId = GetScalarValueFromDB($"SELECT `id` FROM fictionbooks WHERE `Инвентарный_номер` = {textBoxInvNum.Text}");
+                    MakeNonQuery($"INSERT INTO users_boks(`student_id`, `book_id`) VALUES ('{Program.studentId}', '{FictionbookId}')");
                     MessageBox.Show("Книга успешно выдана!");
                     this.Close();
                 }
