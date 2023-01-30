@@ -35,6 +35,7 @@
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
@@ -87,6 +88,11 @@
             this.label3.TabIndex = 4;
             this.label3.Text = "Взятая учебная литература:";
             // 
+            // contextMenuStrip2
+            // 
+            this.contextMenuStrip2.Name = "contextMenuStrip2";
+            this.contextMenuStrip2.Size = new System.Drawing.Size(61, 4);
+            // 
             // lendingBooksShowBooks
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -114,5 +120,6 @@
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip2;
     }
 }

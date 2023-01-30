@@ -16,7 +16,6 @@ namespace LibraryApp
 {
     public partial class subscription3 : Form
     {
-        private static string dbName = @"Data Source = C:\Users\alexc\source\repos\LibraryApp\Students.db";
 
         public subscription3()
         {

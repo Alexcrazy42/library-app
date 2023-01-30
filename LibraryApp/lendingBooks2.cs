@@ -172,8 +172,7 @@ namespace LibraryApp
             var info = dataGridView1.HitTest(point.X, point.Y);
 
 
-            try
-            {
+            
                 string surname = dataGridView1[0, info.RowIndex].Value.ToString();
                 string name = dataGridView1[1, info.RowIndex].Value.ToString();
                 string patronymic = dataGridView1[2, info.RowIndex].Value.ToString();
@@ -195,6 +194,8 @@ namespace LibraryApp
                 {
                     MessageBox.Show("Выбрана пустая строка либо не выбран класс!");
                 }
+            try
+            {
             }
             catch
             {
